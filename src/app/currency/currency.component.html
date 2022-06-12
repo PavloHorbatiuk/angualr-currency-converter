@@ -5,7 +5,7 @@
       <mat-label>Choice currency</mat-label>
       <mat-select [(value)]="from">
         <mat-option
-          *ngFor="let currency of currency"
+          *ngFor="let currency of currencys"
           [value]="currency?.rate"
         >
           {{currency?.txt}}
@@ -32,7 +32,7 @@
     <mat-form-field appearance="outline">
       <mat-label>To exchange</mat-label>
       <mat-select [(value)]="to">
-        <mat-option *ngFor="let currency of currency" [value]="currency?.rate">
+        <mat-option *ngFor="let currency of currencys" [value]="currency?.rate">
           {{ currency?.txt }}
         </mat-option>
       </mat-select>

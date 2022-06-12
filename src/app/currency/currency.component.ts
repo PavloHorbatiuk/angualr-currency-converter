@@ -31,7 +31,7 @@ export class CurrencyComponent implements OnInit {
   constructor(private api: CalculateService) {
   }
 
-  currency = this.api.currencys
+  currencys = this.api.currencys
 
   amountIget: string | null = null;
   amountIhave: string | null = null;
@@ -58,7 +58,7 @@ export class CurrencyComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getCurrencys()
-    console.log()
+    console.log(this.api.currencys)
 
   }
 
