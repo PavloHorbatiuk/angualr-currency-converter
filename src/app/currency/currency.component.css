@@ -1,0 +1,26 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  padding: 1rem;
+  justify-items: center;
+}
+
+.col-one{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.calculate-block {
+  display: flex;
+  flex-direction: column;
+  padding: .5rem;
+  margin: .5rem 0 .5rem 0;
+}
+
+@media screen and (max-width: 940px) {
+  .wrapper {
+    grid-template-columns: 2fr;
+  }
+}

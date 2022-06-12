@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <div class="col-one">
+    <h4 class="title">I have</h4>
+    <mat-form-field appearance="outline">
+      <mat-label>Choice currency</mat-label>
+      <mat-select [(value)]="from">
+        <mat-option
+          *ngFor="let currency of currency"
+          [value]="currency?.rate"
+        >
+          {{currency?.txt}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field  appearance="fill" floatLabel="always">
+      <mat-label>Amount</mat-label>
+      <input [value]="!ifActive?amountIget:null" matInput type="number" name="iHave" (focus)="onFocus(true)"
+             (change)="calculate($event)"
+             class="example-right-align"
+             placeholder="0">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+  </div>
+  <div class="calculate-block">
+    <span> Calculate: {{amountIhave}}</span>
+    <span>From: {{from}}</span>
+    <span>To: {{to}}</span>
+  </div>
+  <div class="col-one">
+    <h4>I get</h4>
+    <mat-form-field appearance="outline">
+      <mat-label>To exchange</mat-label>
+      <mat-select [(value)]="to">
+        <mat-option *ngFor="let currency of currency" [value]="currency?.rate">
+          {{ currency?.txt }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" floatLabel="always">
+      <mat-label>Amount</mat-label>
+      <input [value]="ifActive?amountIhave:null" (focus)="onFocus(false)" name="iGet" (change)="calculate($event)"
+             matInput
+             type="number"
+             class="example-right-align"
+             placeholder="0">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+  </div>
+</div>
