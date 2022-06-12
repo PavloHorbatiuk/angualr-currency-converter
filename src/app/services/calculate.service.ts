@@ -1,30 +1,25 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Currency} from "../currency/currency.component";
+import {Observable} from "rxjs";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalculateService {
+  private useURL = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json'
+
 
   constructor(private http: HttpClient) {
   }
 
-  currencys: Currency[] = []
+  getCurrencys(): Observable<Currency[]> {
+    return this.http.get<Currency[]>(this.useURL)
 
-
-  getCurrencys() {
-    this.http.get<Currency[]>('https://bank.gov.ua/NBUStatService/v1/statdirectory/exchangenew?json')
-      .subscribe((response) => {
-        this.currencys = response
-        console.log(this.currencys)
-        this.getUsd()
-      })
   }
 
-  getUsd() {
-    return this.currencys.find(f => f.r030 === 840)
+  getOneCurrency(array: Currency[], id: number) {
+    return array.find(f => f.r030 === id)
   }
-
 }

@@ -1,10 +1,14 @@
 <mat-toolbar class="app-bar">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>menu</mat-icon>
   </button>
   <span class="example-spacer">Current currency</span>
   <div class="currency">
-    <span class="title"></span>
+    <span class="title" *ngFor="let usd of usd">usd: {{ usd?.rate }}</span>
     <span class="title"></span>
   </div>
 </mat-toolbar>
